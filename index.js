@@ -1,50 +1,41 @@
-// Primitive data types
+// Type Conversion
 
-//string
- let name = 'paras'
- console.log('my name is '+ name);
- console.log('data type of '+ typeof name);
+let myVar;
+myVar = String(33);
+myVar = String(true);
+myVar = String(undefined);
+myVar = String('hello');
+myVar = String(new Date());
+myVar = String([3,4,4,'paras', true]);
 
- //number
- let n = 33
- console.log('data type of'+ typeof n);
+console.log(myVar, typeof myVar);
 
- //boolean
- let drive = true
- console.log('data type of '+ typeof drive);
+let i = 23;
+i = false;
+i = [3,3,666,4432,69];
+i = new Date();
+console.log(i.toString());
+i = {name:'paras', age: 999};
+console.log(i.name.toString());
 
- //boolean
- let nullVal  = null
- console.log('data type of '+ typeof nullVal );
+let n = Number('68');
+ n = Number('6e5'); /* not this is a number */
+ n = Number('6te');  /* NAN */
+ n = Number(true);  /* ouput is 1 this is number */
+ n = Number(false);  /* ouput is 0 this is number */
+ n = Number([1,3,3,3]) /* NAN */
+ n = Number([1]) /* number */
+console.log(n, typeof n);
 
- //undefined
- let und = undefined;
- console.log('data type of ', typeof und)
+let number = 88.088;
+number = Number(88.088)
+number = parseInt(88.088)
+number = parseFloat(88.088)
+console.log(number, typeof number );
+console.log(number.toFixed(5), typeof number)
 
-//2. Reference data types
+//Type Coercion
 
-// arrays
-let myarr =[1,2,3,4,5,6, 'string']
-console.log('data type of ' , typeof myarr);
-
-//object literals
-let marks ={
-    paras:76,
-    rohan: 34,
-    'anuj singh': 44
-}
-
-console.log( marks);
-console.log( marks["anuj singh"]);
-
-//function
-
-function myfunction(){
-    // alert('hi')
-}
-console.log(typeof myfunction);
-myfunction()
-
-//date
-let date = new Date()
-console.log(typeof date);
+let str1 = '10';
+let num2 = 20 ;
+console.log(  num2+ str1 );
