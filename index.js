@@ -1,41 +1,44 @@
-// Type Conversion
+let name = 'paras';
+const greeting = 'good morning'
+console.log(greeting, ' ', name);
 
-let myVar;
-myVar = String(33);
-myVar = String(true);
-myVar = String(undefined);
-myVar = String('hello');
-myVar = String(new Date());
-myVar = String([3,4,4,'paras', true]);
+let html;
+html = ' <h1>this is a heading</h1>' +
+    '<p>this is a para</p>'+ '<p>this is a another para</p>'
+  
+  html = html.concat(' JavaScript', ' Html')
+// console.log(html.length);
+// console.log(html.toLowerCase());
+// console.log(html.toUpperCase());
+// console.log(html.endsWith('l'));
+// console.log(html.endsWith('is'));
 
-console.log(myVar, typeof myVar);
+console.log(html);
+// console.log(html[0]);
+// console.log(html.indexOf('h1'));
+// console.log(html.lastIndexOf('h1'));
+// console.log(html.charAt(2));
+// console.log(html.endsWith('l'));
+// console.log(html.endsWith('2'));
+// console.log(html.startsWith(' <h1>'));
+// console.log(html.includes('pa'));
+// console.log(html.includes(' kdfjdsj'));
+// console.log(html.substring(1,6)); /* n-1 negative value not acceptale*/
+// console.log(html.slice(1,-6));
+// console.log(html.split('a'));
+// console.log(html.replace('this','that'));
+// console.log(html.replace(/this/g,'PARAS'));
 
-let i = 23;
-i = false;
-i = [3,3,666,4432,69];
-i = new Date();
-console.log(i.toString());
-i = {name:'paras', age: 999};
-console.log(i.name.toString());
 
-let n = Number('68');
- n = Number('6e5'); /* not this is a number */
- n = Number('6te');  /* NAN */
- n = Number(true);  /* ouput is 1 this is number */
- n = Number(false);  /* ouput is 0 this is number */
- n = Number([1,3,3,3]) /* NAN */
- n = Number([1]) /* number */
-console.log(n, typeof n);
+// Template Literals
+let fruit1 = 'Mango';
+let fruit2 = 'Banana';
+let fruit3 = 'Orange';
+let html01 = `<h1>my name is paras</h1>
+<p>I like "${fruit1}" , "${fruit2}" and "${fruit3}" .</p>`;
 
-let number = 88.088;
-number = Number(88.088)
-number = parseInt(88.088)
-number = parseFloat(88.088)
-console.log(number, typeof number );
-console.log(number.toFixed(5), typeof number)
+document.getElementById('dom').innerHTML = html01
 
-//Type Coercion
 
-let str1 = '10';
-let num2 = 20 ;
-console.log(  num2+ str1 );
+
+
