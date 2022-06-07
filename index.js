@@ -1,32 +1,48 @@
-let mrks = [34,42,32,58,33];
-const fruits = ['orange', 'Apple','mango']
-const mixed = ['str', 34, [33,'paras']]
+let age = 49
+if (age===29) {
+    console.log('age is 29');
+}
+else if (age===19) {
+    console.log('age is 19');
+}
+else{
+    console.log('age is not 29');
+}
+let vari = undefined;
+if (typeof vari !== 'undefined') {
+    console.log('if not undefined');
+} else {
+    console.log('if undefined');
+}
 
-// console.log(mrks);
-// console.log(fruits[2]);
-// console.log(mixed[2][0]);
+let drive= '';
+if (!drive & age>18) {
+    console.log('drive has some value');
+} else {
+    console.log('drive has not  value');
+}
 
-const arr = new Array('paras',44,55,true)
-// console.log(arr);
-// console.log(Array.isArray('dd'));
+if (drive || age>18) {
+    console.log('value');
+} else {
+    console.log('not value');
+}
 
-arr[0] = 'ValueChanged' 
-// let containArrayValue = arr[0]
-// console.log(arr);
-// console.log(containArrayValue);
-// console.log(mrks.indexOf(58));
+let name = 'paras'
+ name = 'passssssras'
+name==='paras'?console.log('your name is paras'): console.log('who are you? ');
 
-// mutating or modifying arrays
-// console.log(mrks);
-mrks.push('pushedLast')
-mrks.unshift('unshiftFirst')
-mrks.pop()
-mrks.shift()
-// mrks.splice(1,3)
-mrks.splice(1,0, 'paras', 'done',true, 'added',{name:'paras'})
-mrks.reverse()
-// console.log(mrks);
+switch (age){
+    case 10:
+    console.log('age is 10');
+    break;
 
-let marks2 = {name: 'dine', live: 'nine'}
-mrks = mrks.concat(marks2)
-console.log(mrks);
+    case 20:
+        console.log('age is 20');
+    break;
+
+    case 49: console.log('age is 49');
+    break;
+
+    default: console.log('age is not defined');
+}
