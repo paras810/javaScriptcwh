@@ -1,44 +1,32 @@
-let name = 'paras';
-const greeting = 'good morning'
-console.log(greeting, ' ', name);
+let mrks = [34,42,32,58,33];
+const fruits = ['orange', 'Apple','mango']
+const mixed = ['str', 34, [33,'paras']]
 
-let html;
-html = ' <h1>this is a heading</h1>' +
-    '<p>this is a para</p>'+ '<p>this is a another para</p>'
-  
-  html = html.concat(' JavaScript', ' Html')
-// console.log(html.length);
-// console.log(html.toLowerCase());
-// console.log(html.toUpperCase());
-// console.log(html.endsWith('l'));
-// console.log(html.endsWith('is'));
+// console.log(mrks);
+// console.log(fruits[2]);
+// console.log(mixed[2][0]);
 
-console.log(html);
-// console.log(html[0]);
-// console.log(html.indexOf('h1'));
-// console.log(html.lastIndexOf('h1'));
-// console.log(html.charAt(2));
-// console.log(html.endsWith('l'));
-// console.log(html.endsWith('2'));
-// console.log(html.startsWith(' <h1>'));
-// console.log(html.includes('pa'));
-// console.log(html.includes(' kdfjdsj'));
-// console.log(html.substring(1,6)); /* n-1 negative value not acceptale*/
-// console.log(html.slice(1,-6));
-// console.log(html.split('a'));
-// console.log(html.replace('this','that'));
-// console.log(html.replace(/this/g,'PARAS'));
+const arr = new Array('paras',44,55,true)
+// console.log(arr);
+// console.log(Array.isArray('dd'));
 
+arr[0] = 'ValueChanged' 
+// let containArrayValue = arr[0]
+// console.log(arr);
+// console.log(containArrayValue);
+// console.log(mrks.indexOf(58));
 
-// Template Literals
-let fruit1 = 'Mango';
-let fruit2 = 'Banana';
-let fruit3 = 'Orange';
-let html01 = `<h1>my name is paras</h1>
-<p>I like "${fruit1}" , "${fruit2}" and "${fruit3}" .</p>`;
+// mutating or modifying arrays
+// console.log(mrks);
+mrks.push('pushedLast')
+mrks.unshift('unshiftFirst')
+mrks.pop()
+mrks.shift()
+// mrks.splice(1,3)
+mrks.splice(1,0, 'paras', 'done',true, 'added',{name:'paras'})
+mrks.reverse()
+// console.log(mrks);
 
-document.getElementById('dom').innerHTML = html01
-
-
-
-
+let marks2 = {name: 'dine', live: 'nine'}
+mrks = mrks.concat(marks2)
+console.log(mrks);
