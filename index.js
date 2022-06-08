@@ -1,48 +1,75 @@
-let age = 49
-if (age===29) {
-    console.log('age is 29');
-}
-else if (age===19) {
-    console.log('age is 19');
-}
-else{
-    console.log('age is not 29');
-}
-let vari = undefined;
-if (typeof vari !== 'undefined') {
-    console.log('if not undefined');
-} else {
-    console.log('if undefined');
+// general Loops: for, while, do-while
+
+for (i = 0; i < 10; i++) {
+    // if(i===9){
+    //     i++;
+    //     continue
+    // }
+    if(i===2){break}
+    // console.log(i)
 }
 
-let drive= '';
-if (!drive & age>18) {
-    console.log('drive has some value');
-} else {
-    console.log('drive has not  value');
+let a = 10
+a++
+a += 10 /*it means a = a+10*/
+a -= 10 /*it means a = a-10*/
+// console.log(a)
+
+let x = 10
+let y = 20
+x -= y /*it means x = x-y*/
+y += x /*it means x = x+y*/
+// console.log('x =',x,'y =',y)
+
+// while loop
+
+let w = 0;
+while (w < 10) {
+    if (w === 1) {
+        // break;
+        w++;
+        continue;
+
+    }
+    // console.log(w)
+
+    w += 1;
+
 }
 
-if (drive || age>18) {
-    console.log('value');
-} else {
-    console.log('not value');
+
+//do while loop
+k = 0
+do {
+
+    if (k === 5) {
+        // break;
+        k++
+        continue;
+    }
+    // console.log(k)
+    k++;
+
+} while (k < 10);
+
+let arrayy =['hello','done','loop',23,44]
+for (let i = 0; i < arrayy.length; i++) {
+    const e = arrayy[i]
+    // console.log(e);
+    
+}
+arrayy.forEach((e,index, array)=>{
+    console.log(e);
+    console.log(index);
+    console.log(array);
+})
+
+let intro ={
+    name: 'paras',
+    age:999,
+    live:'delhi'
 }
 
-let name = 'paras'
- name = 'passssssras'
-name==='paras'?console.log('your name is paras'): console.log('who are you? ');
-
-switch (age){
-    case 10:
-    console.log('age is 10');
-    break;
-
-    case 20:
-        console.log('age is 20');
-    break;
-
-    case 49: console.log('age is 49');
-    break;
-
-    default: console.log('age is not defined');
+for(let key in intro){
+    // console.log(key);
 }
