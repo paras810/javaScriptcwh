@@ -1,32 +1,40 @@
-let cont = document.querySelector('.no')
- cont = document.querySelector('.container')
+let element = document.createElement('li')
 
-// console.log(cont);
-// console.log(cont.childNodes); /* include text,comment,elements */
-// console.log(cont.childNodes[3].nodeName);
-// console.log(cont.childNodes[3].nodeType);
+element.className = 'createClass';
+element.id = 'createId';
+element.setAttribute('title','hello')
+// element.textContent= 'Created Text'
+let elmTxt = document.createTextNode('Created Text')
+element.appendChild(elmTxt)
 
-// console.log(cont.children);  /*includes only elements */
-// console.log(cont.children[5].nodeName);
-// console.log(cont.children[5].children[4]);
-// console.log(cont.children[0].nodeType);
+let ul = document.querySelector('ul.this')
+// ul.appendChild(element)
+ul.appendChild(element).style.backgroundColor= 'yellow'
+console.log(element);
 
 
-/*  node types
- 1. element
- 2. attribute
- 3. text node
- 8. comment
- 9. document
- 10. doctype
-*/
+let newh1 = document.createElement('h1')
+newh1.className = 'H1Class'
+newh1.id = 'H1Id'
+let h1Text = document.createTextNode('Heading')
+newh1.appendChild(h1Text)
 
-let container = document.querySelector('div.container')
-// console.log(container.firstChild);
-// console.log(container.lastChild);
-// console.log(container.firstElementChild);
-// console.log(container.firstElementChild.nextElementSibling);
+// document.querySelector('ul.this').firstElementChild.nextElementSibling.appendChild(newh1)
+document.querySelector('ul.this').appendChild(newh1).style.background = '#fc3903'
+ element.replaceWith(newh1)
 
-// console.log(container.lastElementChild);
-// console.log(container.lastElementChild.previousElementSibling);
-// console.log(container.childElementCount);
+ let first = document.getElementById('first')
+ let third = document.getElementById('third')
+//  third.replaceWith(first)
+
+let newChild = document.createElement('h6')
+let h6Text = document.createTextNode('Heading6')
+newChild.appendChild(h6Text)
+
+ul.replaceChild(newChild,first )
+// ul.replaceChildren(newChild,first )
+// ul.removeChild(third)
+
+let getAttr = newh1.getAttribute('id') 
+getAttr = newh1.getAttribute('class') 
+console.log(getAttr);
