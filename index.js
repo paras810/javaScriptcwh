@@ -1,38 +1,32 @@
-let element = document.getElementById('first')
-// element = element.className
-// element = element.childNodes
-// element = element.parentNode
-element.style.backgroundColor = 'yellow'
-element.innerText = 'Good Morning'
-element.innerHTML = `<b> Good Morning </b>`
-// console.log(element);
+let cont = document.querySelector('.no')
+ cont = document.querySelector('.container')
 
-let sel = document.querySelector('#first')
-sel = document.querySelector('.child')
-sel = document.querySelector('b')
-sel = document.querySelector('div')
-sel.style.color = 'green' 
+// console.log(cont);
+// console.log(cont.childNodes); /* include text,comment,elements */
+// console.log(cont.childNodes[3].nodeName);
+// console.log(cont.childNodes[3].nodeType);
 
-// console.log(sel);
+// console.log(cont.children);  /*includes only elements */
+// console.log(cont.children[5].nodeName);
+// console.log(cont.children[5].children[4]);
+// console.log(cont.children[0].nodeType);
 
-// multi element selector
 
-let elems = document.getElementsByClassName('child')
-// console.log(elems[1]);
-elems = document.getElementsByTagName('div')
-console.log(elems);
-console.log(typeof elems);
+/*  node types
+ 1. element
+ 2. attribute
+ 3. text node
+ 8. comment
+ 9. document
+ 10. doctype
+*/
 
-// Array.from(elems).forEach(e=>{
-//     console.log(e)
-//     e.style.color = 'red'
-// })
+let container = document.querySelector('div.container')
+// console.log(container.firstChild);
+// console.log(container.lastChild);
+// console.log(container.firstElementChild);
+// console.log(container.firstElementChild.nextElementSibling);
 
-// for(i=0; i<elems.length; i++){
-//    let e = elems[i]
-//    e.style.color = 'red'
-// }
-for(let i of elems){
-    i.style.color = 'red'
-}
-elems[1].style.color = 'blue'
+// console.log(container.lastElementChild);
+// console.log(container.lastElementChild.previousElementSibling);
+// console.log(container.childElementCount);
