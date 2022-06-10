@@ -1,18 +1,17 @@
-let click = document.getElementById('click')
-click.addEventListener('click', function(e){
-    let variable ;
-    console.log('click');
-    // console.log(typeof e);
-    variable = e.target;
-    variable = e.target.id
-    variable = e.target.className
-    variable = e.target.classList
-    variable = Array.from(e.target.classList);
-    variable = e.offsetX
-    variable = e.offsetY
-    variable = e.clientX
-    variable = e.clientY
+let btn = document.getElementById('btn')
+let container = document.querySelector('.container')
+const func1 =(e)=>{
+    // console.log('thanks', e.offsetX);
+    e.preventDefault()
+    container.style.backgroundColor = `rgba(${e.offsetX} ${e.offsetY} ${e.clientX+20} )`
+    }
+const func2=(e)=>{
+    // console.log('thanks', e.offsetX);
+    e.preventDefault()
+    container.style.backgroundColor = ``
+    }
+// btn.addEventListener('click', func1)
+container.addEventListener('mousemove', func1)
+container.addEventListener('mouseleave', func2)
+// btn.addEventListener('dblclick', func1) run again
 
-    console.log(variable);
-
-})
