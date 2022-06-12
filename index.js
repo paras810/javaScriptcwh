@@ -1,21 +1,25 @@
-let car = {
-    name: 'volvo',
-    topSpeed: '444 km/h',
-    run: function() {console.log('car is running'); }
+let obj = {
+    name: 'Nothing',
+    age: 0000,
+    live: 'unknown'
 }
+console.log(obj);
 
-function carGenerator(givenName, givenSpeed) {
-    this.carName = givenName,
-    this.carSpeed = givenSpeed,
-    this.run = function(){console.log(`${this.carName} is running on speed ${this.carSpeed} km/h `)},
-
-    this.analyze = function(){ console.log(`${this.carName} is slower by ${378 - this.carSpeed} km/h than tesla`)}
-  
+function msg(giveName) {
+    this.emplyName = giveName
 }
-console.log(car);
-let car1 = new carGenerator('volvo 2.0',200)
-car1 = new carGenerator('Nano',100)
-// console.log(car1);
-// console.log(car1.run());
-console.log(car1.analyze());
+let msg2 = new msg('javascript')
+console.log(msg2);
+
+msg.prototype.getName = function(){
+return this.emplyName
+}
+console.log(msg2.getName());
+
+msg.prototype.setNewName = function (newName) {
+   return this.emplyName = newName
+}
+console.log(msg2.setNewName('addedNewName'));
+console.log(msg2);
+
 
