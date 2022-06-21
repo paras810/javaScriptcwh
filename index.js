@@ -1,53 +1,47 @@
-const proto = {
-    slogan: function(){
-        return 'this company is the best'
-    },
-    changeName: function(newName){
-    return this.name = newName;
+class employee {
+    constructor(givenName, givenExp, givenDiv) {
+        this.name = givenName,
+            this.exp = givenExp,
+            this.div = givenDiv
+    }
+    slogan() {
+        return `hello my name is ${this.name}`
+    }
+    joiningYear() {
+        return `${this.name} joined this company in ${2022 - this.exp}`
+    }
+    static sum(a, b) {
+        return a + b
     }
 }
-//  this create paras object
-const paras = Object.create(proto)
-paras.name = 'newParas'
-paras.role = 'role'
-paras.changeName('i know')
+// inheritence
+class programmer extends employee {
+    constructor(givenName, givenExp, givenDiv, givenLan, givenGithub) {
+        super(givenName, givenExp, givenDiv)
+        this.lang = givenLan
+        this.github = givenGithub
+    }
+    favLang(){
+        if(this.lang === 'javaScript'){
+            return `${this.name} favourite language is JavaScript`
+        }
+        else{
+            return `${this.name} favourite language is python` 
+        }
+    }
+    static multiply (x, z){
+        return x * z
+    }
+
+}
+
+let paras = new employee('paras', 1, 'plazma')
 // console.log(paras);
+// console.log(paras.slogan());
+// console.log(paras.joiningYear());
+// console.log(employee.sum(1,12));
 
-//  this also create paras object
-const paras2 = Object.create(proto,{
-    name:{value:'paras', writable: true},
-    yourRole: {value:'ok'}
-})
-// console.log(paras2);
-// console.log(paras2.changeName('paras2'));
-
-
-// Employee constructor
-function Employee(name, salary, experience){
-    this.name = name,
-    this.salary = salary,
-    this.experience = experience
-} 
-// slogan
-Employee.prototype.slogan= function(){
-    return `this company is best, Regards, ${this.name}`
-}
-let anuj = new Employee('anuj', 00, '1 years') 
-// console.log(anuj);
-console.log(anuj.slogan());
-
-//programmer
-function programmer(name,salary, experience, language){
-Employee.call(this,name, salary,experience)
-this.language = language
-}
-// inherit the prototype
-programmer.prototype = Object.create(Employee.prototype)
-
-// manually set the constructor
-programmer.prototype.constructor = programmer
-
-let mohan = new programmer('mohan',11,11,'javaScript')
-
+let mohan = new programmer('mohan',2,'division','javaScript','mohan3333')
 console.log(mohan);
-// console.log(mohan.slogan());
+// console.log(mohan.favLang());
+console.log(mohan.slogan());
