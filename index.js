@@ -1,25 +1,23 @@
-const students = [
-    { name: 'paras', subject: 'javascript' }
-    , { name: 'anuj', subject: 'php' }
-]
+function func1() {
+    return new Promise(function (resolve, reject) {
+        setTimeout(() => {
+            const error = true
+            if (!error) {
+                console.log('Function: your promise has been resolved');
+                resolve()
+            } else {
+                console.log('your promise has not been resolved');
+                reject('sorry not fullfilled')
+            }
+        }, 2000);
 
-function enrollStudent(student, callback) {
-    setTimeout(() => {
-        students.push(student)
-        console.log('student has been enrolled');
-        callback()
-    }, 3000);
+    })
 }
+func1().then(function () {
+    console.log('paras : Thanks for resolving');
+}).catch(function (error) {
+    console.log('paras : very bad bro '+ error);
+})
 
-function getStudents() {
-    setTimeout(() => {
-        let str = ''
-        students.forEach(e => {
-            str += `<li> ${e.name} </li>`
-        });
-        document.getElementById('students').innerHTML = str
-        console.log('students have been fetched');
-    }, 1000);
-}
-let newStudent = { name: 'rohan', subject: 'vue.js' }
-enrollStudent(newStudent, getStudents)
+// function inside then is ran as - resolve()
+// function inside catch is ran as - reject()
