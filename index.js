@@ -1,15 +1,20 @@
-async function paras (){
-    console.log('inside paras function');
-    const response = await fetch('https://api.github.com/users')
-    console.log('before response');
-    const users = await response.json()
-    console.log('users resolved');
-    return users
-}
+ let a = 'good morning'
+//  if(a!== undefined){
+    //custom error
+//    throw new Error('this is not undefined')
+//  }else{
+//     console.log('this is undefined');
+//  }
 
-console.log('before calling paras');
-let a = paras()
-console.log('after calling paras');
-console.log(a);
-a.then( function(params){console.log(params)})
-console.log('last line of this file');
+try{
+    // ldfkffh
+    // console.log('we are inside try block');
+    getData()
+} catch(error){
+    console.log('are you okay?  ')
+    // console.log(error)
+    // console.log(error.name)
+    // console.log(error.message)
+}finally{
+    console.log('finally we will run this');
+}
