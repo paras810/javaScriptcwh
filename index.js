@@ -1,23 +1,53 @@
-function func1() {
-    return new Promise(function (resolve, reject) {
-        setTimeout(() => {
-            const error = true
-            if (!error) {
-                console.log('Function: your promise has been resolved');
-                resolve()
-            } else {
-                console.log('your promise has not been resolved');
-                reject('sorry not fullfilled')
-            }
-        }, 2000);
+let myBtn = document.getElementById('myBtn')
+let content = document.getElementById('content')
 
+// function getData() {
+//     console.log('started getData');
+//     let url = 'paras.text'
+//     fetch(url).then((response)=>{
+//         console.log('inside first then');
+//         return response.text()
+//     }).then((data)=>{
+//         console.log('inside second then');
+//         console.log(data);
+//     })
+// }
+// console.log('before running getData');
+// getData()
+// console.log('after running getData');
+
+// function getData() {
+//     console.log('started getData');
+//     let url = 'https://api.github.com/users'
+//     fetch(url).then((response)=>{
+//         console.log('inside first then');
+//         return response.json()
+//     }).then((data)=>{
+//         console.log('inside second then');
+//         console.log(data);
+//     })
+// }
+// console.log('before running getData');
+// getData()
+// console.log('after running getData');
+
+function postData() {
+    let url = 'https://jsonplaceholder.typicode.com/posts'
+    let data = ``
+    let params ={
+        method: 'post'
+        ,headers:{
+            'content-Type':'application/json'
+        },
+        // use this if data is in json
+        // body: JSON.stringify(data)
+         // use this if data is in string
+        body: data
+    }
+    fetch(url, params).then((response)=>{
+        return response.json()
+    }).then((data)=>{
+        console.log(data );
     })
 }
-func1().then(function () {
-    console.log('paras : Thanks for resolving');
-}).catch(function (error) {
-    console.log('paras : very bad bro '+ error);
-})
-
-// function inside then is ran as - resolve()
-// function inside catch is ran as - reject()
+postData()
