@@ -1,20 +1,31 @@
- let a = 'good morning'
-//  if(a!== undefined){
-    //custom error
-//    throw new Error('this is not undefined')
-//  }else{
-//     console.log('this is undefined');
-//  }
+let array =['paras','orange','banana','apple']
 
-try{
-    // ldfkffh
-    // console.log('we are inside try block');
-    getData()
-} catch(error){
-    console.log('are you okay?  ')
-    // console.log(error)
-    // console.log(error.name)
-    // console.log(error.message)
-}finally{
-    console.log('finally we will run this');
+console.log(array)
+
+function iterator(values) {
+    let nextIndex = 0
+    // we will return an object
+    return{
+        next: function () {
+            if (nextIndex < values.length) {
+                // we will return below object
+                return{
+                    val: values[nextIndex++],
+                    done: false
+                }
+            } else {
+                return{
+                    done: true
+                }
+            }
+        }
+    }
 }
+
+// using the iterators
+let nextItem = iterator(array)
+console.log(nextItem.next().val);
+console.log(nextItem.next().val);
+console.log(nextItem.next().val);
+console.log(nextItem.next().val);
+console.log(nextItem.next().val);
