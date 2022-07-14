@@ -1,31 +1,20 @@
-let array =['paras','orange','banana','apple']
+//  generator in Js 
+//  1-1B
 
-console.log(array)
+function* numbersGen() {
+    let i = 0;
 
-function iterator(values) {
-    let nextIndex = 0
-    // we will return an object
-    return{
-        next: function () {
-            if (nextIndex < values.length) {
-                // we will return below object
-                return{
-                    val: values[nextIndex++],
-                    done: false
-                }
-            } else {
-                return{
-                    done: true
-                }
-            }
-        }
+    // yield 1;
+    // yield 2;
+    // yield 3;
+    // yield 4;
+    while (true) {
+        // yield i++
+        yield (i++).toString()
     }
 }
-
-// using the iterators
-let nextItem = iterator(array)
-console.log(nextItem.next().val);
-console.log(nextItem.next().val);
-console.log(nextItem.next().val);
-console.log(nextItem.next().val);
-console.log(nextItem.next().val);
+let gen = numbersGen();
+console.log(gen.next());
+console.log(gen.next());
+console.log(gen.next().value);
+console.log(gen.next());
