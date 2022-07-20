@@ -1,40 +1,51 @@
-let peole = ['paras','rohan','anu','skillF']
-// for (let index = 0; index < peole.length; index++) {
-//     const element = peole[index];
-//     console.log(element);
-// }
+let maps = new Map();
+// console.log(maps);
 
-let obj ={
-    name: 'paras',
-    language: 'JS',
-    hobbies: 'web development'
+const key1 = 'myStr', key2 = {},key3 = function () {};
+
+//setting map values
+maps.set(key1, 'Str');
+maps.set(key2, 'obj');
+maps.set(key3, 'function');
+
+// console.log(maps);
+
+//getting the values from a Map
+let value1 = maps.get(key1);
+// console.log(value1);
+
+// getting the size of map
+// console.log(maps.size);
+
+//you can loop using for..of to get keys and values
+for(let [key, value] of maps){
+// console.log(key, value);
 }
-// console.log(obj);
-// Iterating an object using Traditional for loop
-// for (let index = 0; index < Object.keys(obj).length; index++) {
-//     const element = obj[Object.keys(obj)[index]];
-//     console.log(element);
-// }
-// for (const key in obj) {
-//    console.log(obj[key]);
-// }
 
-let myString = 'This is my string';
-// for (const char in myString) {
-//         console.log(myString[char]);
-// }
-
-let anotherString = 'This is another string'
-// for (const key in anotherString) {
-//         const e = anotherString[key];
-//         console.log(e);
-// }
-
-// FOR OF LOOP 
-
-for (const name of peole) {
-    console.log(name);
+// get only keys
+for (const key of maps.keys()) {
+    // console.log(key);
 }
-// for (const string of myString ) {
-//     console.log(string);
-// }
+
+//get only value
+for(let value of maps.values()){
+    // console.log(value);
+}
+
+//you can loop through a map using for each loop
+maps.forEach((value,key)=>{
+// console.log('value is ', value);
+// console.log('key is ', key);
+})
+
+// converting map to an array
+let Aarray = Array.from(maps)
+console.log('Map to array is ' ,Aarray);
+
+// converting map key to an array
+let ArrayKey = Array.from(maps.keys())
+console.log('MapKeys to array is ' ,ArrayKey);
+
+// converting map value to an array
+let ArrayVal = Array.from(maps.values())
+console.log('MapValues to array is ' ,ArrayVal);
