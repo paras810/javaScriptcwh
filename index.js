@@ -1,51 +1,33 @@
-let maps = new Map();
-// console.log(maps);
+const mySet = new Set(); //initialize an empty set
+console.log('the set looks like this', mySet);
 
-const key1 = 'myStr', key2 = {},key3 = function () {};
+//adding value to this set
+mySet.add('this')
+mySet.add('another this')
+mySet.add('another this')
+mySet.add(11)
+mySet.add(11)
+mySet.add({names:'paras'})
+console.log(mySet);
 
-//setting map values
-maps.set(key1, 'Str');
-maps.set(key2, 'obj');
-maps.set(key3, 'function');
+// let anotherSet = new Set([2,44,'some',true, 'some',{a:3,b:'cal'}])
+// console.log(anotherSet)
 
-// console.log(maps);
+console.log(mySet.size);
+console.log(mySet.has(11));
+console.log(mySet.has(1));
+console.log(mySet.delete('thiss'));
+// console.log(mySet.clear());
+// console.log(mySet);
 
-//getting the values from a Map
-let value1 = maps.get(key1);
-// console.log(value1);
+//iterating mySet
+// for (const item of mySet) {
+//     console.log("item is : ",item);
+// }
+mySet.forEach(e => {
+    console.log("item is : ",e);
+});
 
-// getting the size of map
-// console.log(maps.size);
-
-//you can loop using for..of to get keys and values
-for(let [key, value] of maps){
-// console.log(key, value);
-}
-
-// get only keys
-for (const key of maps.keys()) {
-    // console.log(key);
-}
-
-//get only value
-for(let value of maps.values()){
-    // console.log(value);
-}
-
-//you can loop through a map using for each loop
-maps.forEach((value,key)=>{
-// console.log('value is ', value);
-// console.log('key is ', key);
-})
-
-// converting map to an array
-let Aarray = Array.from(maps)
-console.log('Map to array is ' ,Aarray);
-
-// converting map key to an array
-let ArrayKey = Array.from(maps.keys())
-console.log('MapKeys to array is ' ,ArrayKey);
-
-// converting map value to an array
-let ArrayVal = Array.from(maps.values())
-console.log('MapValues to array is ' ,ArrayVal);
+//converting mySet to an array
+let mySetToArray = Array.from(mySet)
+console.log(mySetToArray);
