@@ -1,33 +1,27 @@
-const mySet = new Set(); //initialize an empty set
-console.log('the set looks like this', mySet);
+let sym1 = Symbol('paras')
+let sym2 = Symbol('paras')
 
-//adding value to this set
-mySet.add('this')
-mySet.add('another this')
-mySet.add('another this')
-mySet.add(11)
-mySet.add(11)
-mySet.add({names:'paras'})
-console.log(mySet);
+console.log(sym1 === sym2);
 
-// let anotherSet = new Set([2,44,'some',true, 'some',{a:3,b:'cal'}])
-// console.log(anotherSet)
+let k1 = Symbol('identifier for k1')
+let k2 = Symbol('for k2')
 
-console.log(mySet.size);
-console.log(mySet.has(11));
-console.log(mySet.has(1));
-console.log(mySet.delete('thiss'));
-// console.log(mySet.clear());
-// console.log(mySet);
+let obj ={}
+obj[k1]= 'anuj'
+obj[k2]= 'row'
+obj["name"]= 'dont know'
 
-//iterating mySet
-// for (const item of mySet) {
-//     console.log("item is : ",item);
-// }
-mySet.forEach(e => {
-    console.log("item is : ",e);
-});
+console.log(obj);
+console.log(obj[k1]);
+console.log(obj[k2]);
+console.log(obj.k2); //cannot do this get row because it is same as obj["k2"]
 
-//converting mySet to an array
-let mySetToArray = Array.from(mySet)
-console.log(mySetToArray);
+//symbols are ignored in for in loop
+for(key in obj){
+    console.log(key, obj[key]);
+    console.log(key, obj.name);
+}
+
+//object to json
+let str= JSON.stringify(obj)
+console.log(str);
