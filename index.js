@@ -1,28 +1,27 @@
-//character sets []
+// character classes
+let reg = /\was/ //word character - _ or alphabets or numbers
+reg = /\w+as/ // one or more than one word characters
+reg = /\Was/ // non word chacracter
+reg = /\W+as/ // one or more than one non word chacracter
+reg = /\d999/g // one digit with 999
+reg = /\d+999/g // one or more than one digit with 999
+reg = /\D999/g //  one non digit with 999
+reg = /\D+999/g //  one or more non digit with 999
+reg = /\sis/ // one space with is
+reg = /\s+is/ // one or more space with is
+reg = /\Sis/ // one no space with is
+reg = /\S+is/ // one or more no space with is
+reg =/bhai\b/ // word boundary - after bhai a word should be come
 
-let reg = /p[a-z]ras/ // a to z
-reg = /p[xyz]ras/ // only x,y,z
-reg = /p[^xyz]ra[asd]/ // not x,y,z
-reg = /p[A-Z]ras/ // A to Z
-reg = /p[^xyz]ra[asd]/ // not x,y,z nd only asd
-reg = /p[a-zA-Z]ra[s0-9]/ // a to z or A to Z and s or 0-9
-reg = /paras[^9]/ // not 9
-
-// Quantifiers {}
-reg = /par{3}as/ // r 3 times
-reg = /par{0,2}as/ // r can occur exactly 0 to 2 times
-
-//grouping ()
-reg = /(par){2}done/ // par 2 times
-reg = /(ok){3}([0-9]r)3/ // ok 3 times nd 0-9 with r3
-reg = /(ok){3}([0-9]r){3}/ //
-
-let str = 'parpardone bhai'
- str = 'okokok6r3 work'
- str = 'okokok6r3r1r work'
+//assertions
+reg = /para(?=z)/ // after para should be z
+reg = /para(?!z)/ // after para should be anything except z
+let str = 'okokok6r3r1r work drry he*llo_par+++   as bhaik bhai my number  is 87993999 12Zpar-_as@999#    space9@+$is for assertions para#'
 
 let r = reg.exec(str)
 console.log(r);
+// r = reg.exec(str)
+// console.log(r);
 
 if (reg.test(str)) {
     console.log(`The string "${str}" matches the expression ${reg.source}`);
