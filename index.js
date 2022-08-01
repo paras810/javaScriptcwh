@@ -1,103 +1,86 @@
-console.log('regex')
-const name = document.getElementById('name')
-const email = document.getElementById('email')
-const phone = document.getElementById('phone');
-let validEmail = false;
-let validUser = false;
-let validPhone = false;
-$('#failure').hide()
-$('#success').hide()
+console.log('note');
 
-
-// console.log(name, phone, email);
-name.addEventListener('blur', () => {
-    // console.log('name is blured');
-    //validate name here
-    let regex = /^[a-zA-Z]([0-9a-zA-Z]){2,10}$/;
-    let str = name.value;
-    console.log(regex, str);
-    if (regex.test(str)) {
-        console.log('Your name is valid');
-        name.classList.remove('is-invalid')
-        validUser = true
-    }
-    else {
-        console.log('Your name is not valid');
-        name.classList.add('is-invalid')
-        validUser = false
-    }
-})
-email.addEventListener('blur', () => {
-    // console.log('email is blured');
-    //validate email here
-    let regex = /^([\_\-\.0-9a-zA-Z]+)@gmail\.com$/;
-    // let regex = /^([\-\_\.0-9a-zA-Z]+)@([\-\_\.0-9a-zA-Z]+)\.([a-zA-Z]){2,7}$/;
-    let str = email.value
-    console.log(regex, str);
-    if (regex.test(str)) {
-        console.log('email is valid');
-        email.classList.remove('is-invalid')
-        validEmail = true
+// function to show Notes
+const addfunction =()=>{
+    // console.log('hello');
+        let notes = localStorage.getItem('notes')
+    if (notes == null) {
+        notesObj = [];
     } else {
-        console.log('email is not valid');
-        email.classList.add('is-invalid')
-        validEmail = false
-
+        notesObj = JSON.parse(notes)
     }
+    let html = "";
+    notesObj.forEach(function(e,index) {
+        html += ` <div class="noteCard card my-2 mx-2" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">${index+1}. ${e.title}</h5>
+          <p class="card-text" id="ipText">${e.text}</p>
+          <button id="${index}" onclick="deleteNotes(this.id)" class="btn btn-primary">Delete Note</button>
+        </div>
+      </div>`
+    });
 
-})
-phone.addEventListener('blur', () => {
-    // console.log('phone is blured');
-    //validate phone here
-    let regex = /^([0-9]){10}$/;
-    let str = phone.value;
-    console.log(regex, str);
-    if (regex.test(str)) {
-        console.log('Your phone is valid');
-        phone.classList.remove('is-invalid')
-        validPhone = true
+    let notesElm = document.getElementById('notes')
+    if (notesObj.length != 0) {
+        notesElm.innerHTML = html
+    }else{
+        notesElm.innerHTML = `Nothing to show! Use "Add a Note" section to add notes. `
     }
-    else {
-        console.log('Your phone is not valid');
-        phone.classList.add('is-invalid')
-        validPhone = true
-    }
-})
+}
+addfunction()
 
-let submit = document.getElementById('submit')
-submit.addEventListener('click', (e) => {
-    e.preventDefault()
-    console.log('clicked on submit button');
- console.log(validUser,validEmail,validPhone);
 
-    // submit your form here
-    
-    if (validEmail && validPhone && validUser) {
-        let failure = document.getElementById('failure')
-        console.log('phone,email and user are valid. Submiting the form');
-        let success = document.getElementById('success')
-        success.classList.add('show')
-        // failure.classList.remove('show')
-        // failure.alert('close')
-        $('#success').show()
-        $('#failure').hide()
+let addBtn = document.getElementById('addBtn');
+addBtn.addEventListener('click', (e) => {
+
+    let addTxt = document.getElementById('addTxt')
+    let addTitle = document.getElementById('addTitle')
+    let notes = localStorage.getItem('notes')
+    if (notes == null) {
+        notesObj = [];
     } else {
-        console.log('one out of phone, email or user are not valid. Hence not submitting the form. Please correct the error and try again');
-        let failure = document.getElementById('failure')
-        failure.classList.add('show')
-        // success.classList.remove('show')
-        // success.alert('close')
-        $('#failure').show()
-        $('#success').hide()
-
+        notesObj = JSON.parse(notes)
     }
+    let myObj ={
+        title: addTitle.value,
+        text: addTxt.value
+    }
+    notesObj.push(myObj)
+    localStorage.setItem('notes', JSON.stringify(notesObj))
+    addTxt.value = '';
+    addTitle.value = '';
+    // console.log(notesObj);
 
+    addfunction()
 })
-let close_success = document.getElementById('close_success')
-close_success.addEventListener('click',()=>{
-    $('#success').hide()
+
+// function to delete notes
+function deleteNotes(index) {
+    // console.log('iam deleting');
+    let notes = localStorage.getItem('notes')
+    if (notes == null) {
+        notesObj = [];
+    } else {
+        notesObj = JSON.parse(notes)
+    }
+    notesObj.splice(index, 1)
+    localStorage.setItem('notes',JSON.stringify(notesObj))
+    addfunction()
+}
+
+let search = document.getElementById('searchTxt');
+search.addEventListener('input',()=>{
+    let inputVal = search.value.toLowerCase()
+    // console.log('input event fired', inputVal);
+   let noteCardd = document.getElementsByClassName('noteCard')
+   Array.from(noteCardd).forEach(element => {
+    let cardText = element.getElementsByTagName('p')[0].innerText;
+    if (cardText.includes(inputVal)) {
+        element.style.display = 'block'
+    } else {
+        element.style.display = 'none'
+    }
+   });
 })
-let close_failure = document.getElementById('close_failure')
-close_failure.addEventListener('click',()=>{
-    $('#failure').hide()
-})
+
+// add title, mark a note as important
