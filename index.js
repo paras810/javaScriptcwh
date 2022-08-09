@@ -1,109 +1,48 @@
-// console.log('hello')
+// e1a948cc24194063b9d910da2fcca47d
+//d093053d72bc40248998159804e0e67d
+//grab the news container
+let newsAccordion = document.getElementById('newsAccordion')
 
-// constructor
-function Book(givenName, givenAuthor, givenType) {
-    this.name = givenName,
-        this.author = givenAuthor,
-        this.type = givenType
-}
+// initialze the news api parameters
+let source = 'the-times-of-india'
+let apiKey = 'd093053d72bc40248998159804e0e67d'
 
-// display constructor
-function Display() {
+// create a get request
+let xhr = new XMLHttpRequest();
+//https://newsapi.org/v2/top-headlines?country=in&category=technology
+xhr.open('GET', `https://newsapi.org/v2/top-headlines?sources=${source}&apiKey=${apiKey}`, true)
+xhr.onload = function () {
+    if (this.status === 200) {
+        let json = JSON.parse(this.responseText)
+        console.log(json);
+        let articles = json.articles;
+        console.log(articles);
+        let newsHtml = ''
+       articles.forEach((element,index) => {
+            // console.log(articles[news]);
+            let news = `<div class="card">
+                           <div class="card-header" id="heading${index}">
+                            <h2 class="mb-0">
+                              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse${index}"
+                               aria-expanded="false" aria-controls="collapse${index}">
+                      <b>Breaking News ${index + 1}:</b> ${element["title"]}
+                                </button>
+                            </h2>
+                           </div>
 
-}
-
-// add methods to display prototype
-Display.prototype.add = function (book) {
-    console.log('adding to UI');
-    let tableBody = document.getElementById('tableBody')
-    let uiString = `
-        <tr>
-           <td>${book.name}</td>
-           <td>${book.author}</td>
-           <td>${book.type}</td>
-        </tr>`
-    tableBody.innerHTML += uiString
-}
-
-//implement the clear function
-Display.prototype.clear = function () {
-    let libraryForm = document.getElementById('libraryForm')
-    libraryForm.reset()
-}
-
-//implement the validate function
-Display.prototype.validate = function (book) {
-    // console.log('validating');
-    if (book.name.length < 2 || book.author.length < 2) {
-        return false
-    } else {
-        return true
+                   <div id="collapse${index}" class="collapse " aria-labelledby="heading${index}" data-parent="#newsAccordion">
+                    <div class="card-body"> ${element["content"]}. <a href="${element['url']}" target="_blank" >Read more here</a>  </div>
+                     </div>
+                         </div>`;
+                         newsHtml += news
+                        });
+    newsAccordion.innerHTML = newsHtml
     }
-
-}
-Display.prototype.show = function (type , message) {
-    // console.log('showing alert');
-    let msg = document.getElementById('message')
-    let text;
-    if(type ==='success'){
-     text = 'Success'
-    }else{
-        text = 'Error!'
+    else {
+        console.log('some error occured');
     }
-    msg.innerHTML = `
-  <div class="alert alert-${type} alert-dismissible fade show" role="alert">
-  <strong>${text} </strong> ${message}
-</div>
-`
-setTimeout(() => {
-    msg.innerHTML = ``
-}, 2000);
 }
 
+xhr.send()
+// xhr.getResponseHeader('Content-type', 'application/json')
 
-// add submit event listener to libraryForm
-function libraryFormSubmit(e) {
-    // console.log('sumbitted library form');
-    let name = document.getElementById('bookName').value;
-    let author = document.getElementById('author').value;
-    let type;
-
-    // fiction, programming, cooking
-    let fiction = document.getElementById('fiction')
-    let programming = document.getElementById('programming')
-    let cooking = document.getElementById('cooking')
-
-    if (fiction.checked) {
-        type = fiction.value;
-    }
-    else if (programming.checked) {
-        type = programming.value;
-    }
-    else if (cooking.checked) {
-        type = cooking.value;
-    }
-
-
-    let book = new Book(name, author, type)
-    console.log(book);
-
-    let display = new Display()
-    if (display.validate(book)) {
-        display.add(book)
-        display.clear()
-        display.show('success', 'Your book has been successfully added.')
-    } else {
-        // show error to the user
-        display.show('danger', 'Sorry you can not add this book.')
-    }
-    e.preventDefault()
-    // alert('hi')
-}
-let libraryForm = document.getElementById('libraryForm');
-libraryForm.addEventListener('submit', libraryFormSubmit);
-
-
-
-
-//todos
-//store all the data in localstorage , delete button to delete book, add a scroll bar for books (view )
